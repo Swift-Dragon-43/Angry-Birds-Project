@@ -13,7 +13,6 @@ function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
     world = engine.world;
-
     
     ground = new Ground(600,height,1200,20);
     platform = new Ground(150, 305, 300, 170);
@@ -39,16 +38,17 @@ function setup(){
     //objectName = new className(arg1, arg2)-> () invoke/call constructor and copy the arguments inside the constructor of the class.
     slingshot = new SlingShot(bird.body, { x: 200, y: 50 });
 
+    console.log(pig1.body);
+
 }
 
 function draw(){
     background(backgroundImg);
     Engine.update(engine);
-    console.log(box2.body.position.x);
-    console.log(box2.body.position.y);
-    console.log(box2.body.angle);
+    
     box1.display();
     box2.display();
+
     ground.display();
     pig1.display();
     log1.display();
