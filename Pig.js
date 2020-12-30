@@ -21,7 +21,7 @@ class Pig extends BaseClass{
       pop ();
     }
     
-    console.log(this.body.speed);
+   // console.log(this.body.speed);
     
     }
 

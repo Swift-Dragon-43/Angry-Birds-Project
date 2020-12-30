@@ -44,7 +44,13 @@ function setup(){
 }
 
 function draw(){
+
+    getTime();
+    
+    if (backgroundImg) {
     background(backgroundImg);
+    }
+    
     Engine.update(engine);
     
     box1.display();
@@ -67,6 +73,7 @@ function draw(){
     bird.display();
     platform.display();
     slingshot.display();
+
 }
 
 function mouseDragged() {
@@ -84,4 +91,28 @@ function keyPressed() {
       slingshot.attach(bird.body);
       bird.trajectory = [];  
     }
+}
+
+// JS is synchronous language - executes line by line
+// we need to wait for fetch()/API call to complete
+
+async function getTime(){
+    // steps to do task
+
+    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+    var responseJSON = await response.json();
+    console.log(responseJSON);
+
+    //"datetime": "2020-12-30T20:39:01.336944+05:30"
+    var dateTime = responseJSON.datetime;
+
+    var hr = dateTime.slice(11, 13);  
+    
+    if(hr> 06 && hr< 17){
+        bg = "sprites/bg.png"
+    }else{
+        bg = "sprites/bi.jpg"
+    }
+
+    backgroundImg = loadImage(bg);
 }
