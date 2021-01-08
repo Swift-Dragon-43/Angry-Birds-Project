@@ -12,9 +12,9 @@ class Pig extends BaseClass{
     if(this.body.speed < 3){
       super.display();
     }else{
+      
+      World.remove(world, this.body);
       push ();
-      World.add(world, this.body);
-
       this.visibility = this.visibility - 0.5;
       tint (255, this.visibility);
       image(this.image, this.body.position.x, this.body.position.y, this.width, this.height);
@@ -24,6 +24,16 @@ class Pig extends BaseClass{
    // console.log(this.body.speed);
     
     }
+
+   score(){
+
+   if(this.visibility < 0 && this.visibility >= -100) {
+
+    score = score + 1;
+    console.log("hi");
+    }
+
+   }
 
   };
   
